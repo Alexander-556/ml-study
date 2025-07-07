@@ -1,0 +1,59 @@
+# Byte-compiled / cache / logs
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ml-env/
+
+# Package distribution
+build/
+dist/
+*.egg-info/
+
+# IDE/editor settings
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python virtual environment files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Python environment export
+*.conda
+*.env
+*.envrc
+*.venv
+
+# VS Code Jupyter config
+.vscode-jupyter/
+
+# Data files (optional - uncomment if needed)
+# *.csv
+# *.tsv
+# *.txt
+
+# Model files (optional - uncomment if needed)
+# *.pt
+# *.pth
+# *.h5
+
+# Ignore experiment outputs (optional)
+# outputs/
+# logs/
+
+/Docs/
