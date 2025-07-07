@@ -6,6 +6,7 @@
 # Necessary Libraries
 import numpy as np
 import torch
+import os
 
 # Custom Classes and Functions
 from model import LinearNormal
@@ -13,13 +14,17 @@ from visual import plot_regression
 
 
 def main():
+    # Use a line of debug code to find the location
+    # print("CWD:", os.getcwd())
+
     # * Step 1: Load and prepare data
     # Load data file using absolute path
     # ! Replace the following path with your own
     data = np.loadtxt(
-        "C:\\Documents\\600_Testing_Programing\\MLStudy\\Docs\\ex1data1.txt",
+        "./Docs/ex1data1.txt",
         delimiter=",",
     )
+
     # Store data as 1D numpy lists
     x_np = data[:, 0].reshape(-1, 1)
     y_np = data[:, 1].reshape(-1, 1)

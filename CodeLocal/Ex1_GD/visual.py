@@ -22,7 +22,7 @@ def plot_regression(x_np, y_np, y_pred_np):
     plt.title("Gradient Descent Fit")
     plt.legend()
     plt.grid(True)
-    plt.savefig("C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex1_GD\\Plots\\FittedModel.png")
+    plt.savefig("./CodeLocal/Ex1_GD/Plots/FittedModel.png")
     plt.close()
 
 def plot_loss(loss_history):
@@ -33,7 +33,7 @@ def plot_loss(loss_history):
     plt.title("Training Loss over Epochs")
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex1_GD\\Plots\\LossHist.png")
+    plt.savefig("./CodeLocal/Ex1_GD/Plots/LossHist.png")
     plt.close()
 
 def plot_grad(grad_norm_history):
@@ -44,5 +44,5 @@ def plot_grad(grad_norm_history):
     plt.title("Gradient Norm over Epochs")
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex1_GD\\Plots\\GradNorm.png")
+    plt.savefig("./CodeLocal/Ex1_GD/Plots/GradNorm.png")
     plt.close()

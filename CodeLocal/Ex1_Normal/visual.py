@@ -29,4 +29,5 @@ def plot_regression(x_np, y_np, y_pred_np):
     plt.title("Least Squares Fit (Normal Equation)")
     plt.legend()
     plt.grid(True)
-    plt.show()
+    plt.savefig("./CodeLocal/Ex1_Normal/Plots/LinearReg.png")
+    plt.close()

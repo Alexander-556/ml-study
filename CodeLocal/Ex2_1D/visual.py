@@ -31,7 +31,7 @@ def plot_data(score1_np, score2_np, stateF_np):
     plt.legend()
     plt.grid(True)
     plt.savefig(
-        "C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex2_1D\\Plots\\DataScatter.png"
+        "./CodeLocal/Ex2_1D/Plots/DataScatter.png"
     )
     plt.close()
 
@@ -78,6 +78,6 @@ def plot_sigmoid_boundary(model, X_tensor, y_tensor):
     plt.grid(True)
     plt.tight_layout()
     plt.savefig(
-        "C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex2_1D\\Plots\\DecisionBoundary.png"
+        "./CodeLocal/Ex2_1D/Plots/DecisionBoundary.png"
     )
     plt.close()

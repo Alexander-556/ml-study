@@ -17,7 +17,7 @@ def main():
     # Load data file using absolute path
     # ! Replace the following path with your own
     data = np.loadtxt(
-        "C:\\Documents\\600_Testing_Programing\\MLStudy\\Docs\\ex2data1.txt",
+        "./Docs/ex2data1.txt",
         delimiter=",",
     )
 
