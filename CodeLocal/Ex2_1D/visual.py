@@ -30,8 +30,11 @@ def plot_data(score1_np, score2_np, stateF_np):
     plt.title("Challenge Scores vs Outcome")
     plt.legend()
     plt.grid(True)
-    plt.savefig("C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex2_1D\\Plots\\DataScatter.png")
+    plt.savefig(
+        "C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex2_1D\\Plots\\DataScatter.png"
+    )
     plt.close()
+
 
 def plot_sigmoid_boundary(model, X_tensor, y_tensor):
     X_np = X_tensor.numpy().flatten()
@@ -50,14 +53,31 @@ def plot_sigmoid_boundary(model, X_tensor, y_tensor):
 
     # Plot
     plt.figure(figsize=(8, 5))
-    plt.scatter(X_np, y_np, color="blue", label="Data", alpha=0.6)
-    plt.plot(x_vals, y_pred, color="red", linewidth=2, label="Sigmoid")
-    plt.axvline(boundary, color="green", linestyle="--", label=f"Boundary: x = {boundary:.2f}")
+    plt.scatter(
+        X_np,
+        y_np,
+        s=8,
+        color="blue",
+        label="Data",
+        alpha=0.6,
+    )
+    plt.plot(
+        x_vals,
+        y_pred,
+        color="red",
+        linewidth=2,
+        label="Sigmoid",
+    )
+    plt.axvline(
+        boundary, color="green", linestyle="--", label=f"Boundary: x = {boundary:.2f}"
+    )
     plt.xlabel("Normalized Average Score")
     plt.ylabel("Predicted Probability")
     plt.title("Logistic Classifier Decision Boundary")
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex2_1D\\Plots\\DecisionBoundary.png")
+    plt.savefig(
+        "C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex2_1D\\Plots\\DecisionBoundary.png"
+    )
     plt.close()
