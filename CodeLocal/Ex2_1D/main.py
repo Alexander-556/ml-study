@@ -38,14 +38,15 @@ def main():
     avg_score = (avg_score - avg_mean) / avg_std
 
     # * Step 2: Initialize and train model
-    # Assuming avg_score is already normalized and stateF is your target
     model = Logistic1D(learning_rate=0.01, epochs=5000)
     model.fit(avg_score, stateF)
 
     # * Step 3: Output final parameters
+    # Grab coefficients and piece up the model
     w, b = model.coefficients()
     print(f"Final Model: y = sigmoid({w:.4f} * x + {b:.4f})")
 
+    # Calculate the accuracy values
     preds = model.predict(avg_score)
     acc = (preds == stateF).float().mean().item()
     print(f"Accuracy: {acc:.4f}")
