@@ -1,5 +1,5 @@
 # model.py
-# The class definition of LinearNormal Class, analytical approach.
+# The class definition of LinearNormal Class, Analytical approach.
 
 """Import Libraries and Custom Files"""
 
@@ -21,6 +21,7 @@ class LinearNormal:
         
         # Grab the length of the 1D array
         n = x.shape[0]
+        
         # Add the bias column of 1
         X = torch.cat([torch.ones_like(x), x], dim=1)
 

@@ -1,5 +1,5 @@
 # main.py
-# The entry point of the Exercise 1 Normal Equation Approach.
+# The entry point of the Exercise 1 Normal Equation approach.
 
 """Import Libraries and Custom Files"""
 
@@ -16,7 +16,10 @@ def main():
     # * Step 1: Load and prepare data
     # Load data file using absolute path
     # ! Replace the following path with your own
-    data = np.loadtxt("C:\\Documents\\600_Testing_Programing\\MLStudy\\Docs\\ex1data1.txt", delimiter=",")
+    data = np.loadtxt(
+        "C:\\Documents\\600_Testing_Programing\\MLStudy\\Docs\\ex1data1.txt",
+        delimiter=",",
+    )
     # Store data as 1D numpy lists
     x_np = data[:, 0].reshape(-1, 1)
     y_np = data[:, 1].reshape(-1, 1)
@@ -25,7 +28,7 @@ def main():
     y = torch.from_numpy(y_np).float()
 
     # * Step 2: Perform Model Fit
-    # Call fit class
+    # Call fit class (Constructor initialization)
     model = LinearNormal()
     # Call fit function
     model.fit(x, y)
@@ -39,6 +42,7 @@ def main():
     print(f"Analytical Solution: y = {w:.4f} * x + {b:.4f}")
     # Plot
     plot_regression(x_np, y_np, y_pred.detach().numpy())
+
 
 if __name__ == "__main__":
     main()
