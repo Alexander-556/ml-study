@@ -1,9 +1,14 @@
+# visual.py
+# Plot the given data and the predicted values. 
+
+"""Import Libraries and Custom Files"""
+# Necessary Libraries
 import matplotlib.pyplot as plt
 import numpy as np
-from visual import plot_regression
-
 
 def plot_regression(x_np, y_np, y_pred_np):
+
+    # Scatter Plot Data Points
     plt.scatter(
         x_np,
         y_np,
@@ -11,6 +16,7 @@ def plot_regression(x_np, y_np, y_pred_np):
         label="Data",
     )
 
+    # Plot Fitted Line
     plt.plot(
         x_np,
         y_pred_np,
