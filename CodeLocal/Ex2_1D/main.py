@@ -14,7 +14,6 @@ from model import Logistic1D
 
 def main():
     # * Step 1: Load and prepare data
-    # Load data file using absolute path
     # ! Replace the following path with your own
     data = np.loadtxt(
         "./Docs/ex2data1.txt",

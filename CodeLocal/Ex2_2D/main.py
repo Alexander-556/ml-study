@@ -14,7 +14,6 @@ from model import LogisticGD
 
 def main():
     # * Step 1: Load and prepare data
-    # Load data file using absolute path
     # ! Replace the following path with your own
     data = np.loadtxt(
         "C:\\Documents\\600_Testing_Programing\\MLStudy\\Docs\\ex2data1.txt",
