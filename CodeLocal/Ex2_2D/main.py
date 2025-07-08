@@ -38,7 +38,7 @@ def main():
     norm_X = torch.cat([norm_score1, norm_score2], dim=1)
 
     # * Step 2: Initialize and train model
-    model = Logistic2D(learning_rate=0.01, epochs=5000)
+    model = Logistic2D(learning_rate=0.01, epochs=40000)
     model.fit(norm_X, stateF)
 
     # * Step 3: Output final parameters
