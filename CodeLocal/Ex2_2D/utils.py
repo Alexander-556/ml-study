@@ -4,4 +4,8 @@
 import numpy as np
 import torch
 
-def normalize(self, ):
+def normalize(input:torch.Tensor)->torch.Tensor:
+    avg_input = input.mean()
+    std_input = input.std()
+    norm_input = (input - avg_input) / std_input
+    return norm_input

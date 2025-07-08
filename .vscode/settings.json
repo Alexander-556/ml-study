@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
+        "axvline",
+        "linestyle",
         "loadtxt",
+        "preds",
         "randn",
         "xlabel",
         "ylabel"

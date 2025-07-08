@@ -10,6 +10,7 @@ import torch
 # Custom Classes and Functions
 from visual import plot_data
 from model import Logistic2D
+from utils import normalize
 
 
 def main():
@@ -31,27 +32,28 @@ def main():
     stateF = torch.from_numpy(stateF_np).float()
 
     # Normalize Inputs using Z score
-    avg_mean = avg_score.mean()
-    avg_std = avg_score.std()
-    avg_score = (avg_score - avg_mean) / avg_std
+    norm_score1 = normalize(score1)
+    norm_score2 = normalize(score2)
+
+    norm_X = torch.cat([norm_score1, norm_score2], dim=1)
 
     # * Step 2: Initialize and train model
-    model = Logistic1D(learning_rate=0.01, epochs=5000)
-    model.fit(avg_score, stateF)
+    model = Logistic2D(learning_rate=0.01, epochs=5000)
+    model.fit(norm_X, stateF)
 
     # * Step 3: Output final parameters
     # Grab coefficients and piece up the model
-    w, b = model.coefficients()
-    print(f"Final Model: y = sigmoid({w:.4f} * x + {b:.4f})")
+    w1, w2, b = model.coefficients()
+    print(f"Final Model: y = sigmoid({w1:.4f} * x1 + {w2:.4f} * x2 + {b:.4f})")
 
     # Calculate the accuracy values
-    preds = model.predict(avg_score)
+    preds = model.predict(norm_X)
     acc = (preds == stateF).float().mean().item()
     print(f"Accuracy: {acc:.4f}")
 
     # * Step 4: Visualization
-    plot_data(score1_np, score2_np, stateF_np)
-    plot_sigmoid_boundary(model, avg_score, stateF)
+    # plot_data(score1_np, score2_np, stateF_np)
+    # plot_sigmoid_boundary(model, norm_X, stateF)
 
 
 if __name__ == "__main__":
