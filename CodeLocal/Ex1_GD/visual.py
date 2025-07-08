@@ -1,3 +1,8 @@
+# visual.py
+# Plot the given data and the predicted values. 
+
+"""Import Libraries and Custom Files"""
+# Necessary Libraries
 import matplotlib.pyplot as plt
 import numpy as np
 

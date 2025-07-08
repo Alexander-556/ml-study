@@ -25,13 +25,15 @@ def main():
     score2_np = data[:, 1].reshape(-1, 1)
     stateF_np = data[:, 2].reshape(-1, 1)
 
+    # Calculate average from the two scores
+    # and store avg into a 1D numpy list
     avg_score_np = (score1_np + score2_np) / 2
 
     # Convert from numpy list to torch tensors
     avg_score = torch.from_numpy(avg_score_np).float()
     stateF = torch.from_numpy(stateF_np).float()
 
-    # Normalize Inputs
+    # Normalize Inputs using Z score
     avg_mean = avg_score.mean()
     avg_std = avg_score.std()
     avg_score = (avg_score - avg_mean) / avg_std

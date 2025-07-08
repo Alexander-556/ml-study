@@ -1,5 +1,5 @@
 # main.py
-# The entry point of the Exercise 2.
+# The entry point of the Exercise 2, 2D approach.
 
 """Import Libraries and Custom Files"""
 
@@ -9,14 +9,14 @@ import torch
 
 # Custom Classes and Functions
 from visual import plot_data
-from model import LogisticGD
+from model import Logistic2D
 
 
 def main():
     # * Step 1: Load and prepare data
     # ! Replace the following path with your own
     data = np.loadtxt(
-        "C:\\Documents\\600_Testing_Programing\\MLStudy\\Docs\\ex2data1.txt",
+        "./Docs/ex2data1.txt",
         delimiter=",",
     )
 
@@ -30,25 +30,28 @@ def main():
     score2 = torch.from_numpy(score2_np).float()
     stateF = torch.from_numpy(stateF_np).float()
 
-    # Shape: (n, 2)
-    X = torch.cat([score1, score2], dim=1)  
-    # Shape: (n, 1)
-    y = stateF
-
-    X_mean = X.mean(dim=0)
-    X_std = X.std(dim=0)
-    X = (X - X_mean) / X_std
+    # Normalize Inputs using Z score
+    avg_mean = avg_score.mean()
+    avg_std = avg_score.std()
+    avg_score = (avg_score - avg_mean) / avg_std
 
     # * Step 2: Initialize and train model
-    model = LogisticGD(learning_rate=0.1, epochs=1000)
-    model.fit(X, y)
+    model = Logistic1D(learning_rate=0.01, epochs=5000)
+    model.fit(avg_score, stateF)
 
     # * Step 3: Output final parameters
-    w1, w2, b = model.coefficients()
-    print(f"Final Model: y = sigmoid({w1:.4f} * x1 + {w2:.4f} * x2 + {b:.4f})")
+    # Grab coefficients and piece up the model
+    w, b = model.coefficients()
+    print(f"Final Model: y = sigmoid({w:.4f} * x + {b:.4f})")
+
+    # Calculate the accuracy values
+    preds = model.predict(avg_score)
+    acc = (preds == stateF).float().mean().item()
+    print(f"Accuracy: {acc:.4f}")
 
     # * Step 4: Visualization
     plot_data(score1_np, score2_np, stateF_np)
+    plot_sigmoid_boundary(model, avg_score, stateF)
 
 
 if __name__ == "__main__":

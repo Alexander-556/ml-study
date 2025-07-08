@@ -24,7 +24,7 @@ class LinearGD:
             raise ValueError("Weights not initialized. Did you forget to call fit()?")
 
         if self.w.grad is None or self.b.grad is None:
-            raise RuntimeError("Gradients are not available. Did you run loss.backward()?")    
+            raise RuntimeError("Gradients are not available. Did you run loss.backward()?")
 
     # Function: fit()
     # Fit model using gradient descent.

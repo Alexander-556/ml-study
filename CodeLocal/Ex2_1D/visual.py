@@ -1,3 +1,8 @@
+# visual.py
+# Plot the given data and the predicted values.
+
+"""Import Libraries and Custom Files"""
+# Necessary Libraries
 import torch
 import matplotlib.pyplot as plt
 import numpy as np
@@ -30,9 +35,7 @@ def plot_data(score1_np, score2_np, stateF_np):
     plt.title("Challenge Scores vs Outcome")
     plt.legend()
     plt.grid(True)
-    plt.savefig(
-        "./CodeLocal/Ex2_1D/Plots/DataScatter.png"
-    )
+    plt.savefig("./CodeLocal/Ex2_1D/Plots/DataScatter.png")
     plt.close()
 
 
@@ -69,7 +72,10 @@ def plot_sigmoid_boundary(model, X_tensor, y_tensor):
         label="Sigmoid",
     )
     plt.axvline(
-        boundary, color="green", linestyle="--", label=f"Boundary: x = {boundary:.2f}"
+        boundary, 
+        color="green", 
+        linestyle="--", 
+        label=f"Boundary: x = {boundary:.2f}"
     )
     plt.xlabel("Normalized Average Score")
     plt.ylabel("Predicted Probability")
@@ -77,7 +83,5 @@ def plot_sigmoid_boundary(model, X_tensor, y_tensor):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(
-        "./CodeLocal/Ex2_1D/Plots/DecisionBoundary.png"
-    )
+    plt.savefig("./CodeLocal/Ex2_1D/Plots/DecisionBoundary.png")
     plt.close()
