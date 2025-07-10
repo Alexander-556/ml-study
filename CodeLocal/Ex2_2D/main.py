@@ -51,9 +51,9 @@ def main():
     acc = (preds == stateF).float().mean().item()
     print(f"Accuracy: {acc:.4f}")
 
-    # * Step 4: Visualization
-    # plot_data(score1_np, score2_np, stateF_np)
-    # plot_sigmoid_boundary(model, norm_X, stateF)
+    # * Step 4: Visualization 
+     plot_data(score1_np, score2_np, stateF_np)
+     plot_sigmoid_boundary(model, norm_X, stateF)
 
 
 if __name__ == "__main__":

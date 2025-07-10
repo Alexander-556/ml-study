@@ -19,7 +19,7 @@ class Logistic1DProd:
         self.loss_history = []
 
     # Helper: _validate_gradients()
-    # Validates the parameters.
+    # Validates the parameters to avoid issues if the code is modified
     def _validate_gradients(self):
         if self.w is None or self.b is None:
             raise ValueError("Weights not initialized. Did you forget to call fit()?")
@@ -47,23 +47,26 @@ class Logistic1DProd:
     ) -> torch.Tensor:
         # y is the real data
         # y_hat is the model predicted output
-        eps = 1e-8  # Prevent log(0)
+        eps = 1e-8  # Tiny offset to prevent log(0) errors
         return -torch.mean(
             y * torch.log(y_hat + eps) + (1 - y) * torch.log(1 - y_hat + eps)
         )
 
     def fit(self, X: torch.Tensor, y: torch.Tensor):
-        # Initialize weight and bias with random
+        # Initialize weight and bias with random values
         self.w = torch.randn(1, requires_grad=True)
         self.b = torch.randn(1, requires_grad=True)
 
+        #Now we start training!
         for epoch in range(self.epochs):
             z = X * self.w + self.b
             y_hat = self.sigmoid(z)
             loss = self.binary_cross_entropy(y_hat, y)
 
+            #Calculate our gradient based on our loss
             loss.backward()
 
+            #Double-check that our varients are good
             self._validate_gradients()
 
             # Update parameters based on the gradient
@@ -71,6 +74,8 @@ class Logistic1DProd:
             with torch.no_grad():
                 self.w -= self.lr * self.w.grad  # type: ignore
                 self.b -= self.lr * self.b.grad  # type: ignore
+
+                #Reset our gradients - torch appends them by default
                 self.w.grad.zero_()  # type: ignore
                 self.b.grad.zero_()  # type: ignore
 

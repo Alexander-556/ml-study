@@ -14,6 +14,7 @@ def plot_data(score1_np, score2_np, stateF_np):
     mask_pass = stateF_np.flatten() == 1
     mask_fail = stateF_np.flatten() == 0
 
+    #Plot the victory points in blue
     plt.scatter(
         score1_np[mask_pass],
         score2_np[mask_pass],
@@ -22,6 +23,7 @@ def plot_data(score1_np, score2_np, stateF_np):
         label="Victory (1)",
     )
 
+    #Plot the defeat points in red
     plt.scatter(
         score1_np[mask_fail],
         score2_np[mask_fail],
@@ -30,6 +32,7 @@ def plot_data(score1_np, score2_np, stateF_np):
         label="Defeat (0)",
     )
 
+    #Some label for the plot
     plt.xlabel("Score 1")
     plt.ylabel("Score 2")
     plt.title("Challenge Scores vs Outcome")
@@ -38,7 +41,7 @@ def plot_data(score1_np, score2_np, stateF_np):
     plt.savefig("./CodeLocal/Ex2_Product/Plots/DataScatter.png")
     plt.close()
 
-
+#This plots our solution curve
 def plot_sigmoid_boundary(model, X_tensor, y_tensor):
     X_np = X_tensor.numpy().flatten()
     y_np = y_tensor.numpy().flatten()
@@ -54,7 +57,7 @@ def plot_sigmoid_boundary(model, X_tensor, y_tensor):
     w, b = model.w.item(), model.b.item()
     boundary = -b / w
 
-    # Plot
+    #Plot the data along success or failure
     plt.figure(figsize=(8, 5))
     plt.scatter(
         X_np,
@@ -64,6 +67,8 @@ def plot_sigmoid_boundary(model, X_tensor, y_tensor):
         label="Data",
         alpha=0.6,
     )
+
+    #Plot our sigmoid on top of the data
     plt.plot(
         x_vals,
         y_pred,
@@ -71,12 +76,16 @@ def plot_sigmoid_boundary(model, X_tensor, y_tensor):
         linewidth=2,
         label="Sigmoid",
     )
+    #This plots the boundary - the point at which we switch from predicting 
+    #success to failure - over the sigmoid and the data
     plt.axvline(
         boundary, 
         color="green", 
         linestyle="--", 
         label=f"Boundary: x = {boundary:.2f}"
     )
+
+    #Some labels for the graph
     plt.xlabel("Normalized Average Score")
     plt.ylabel("Predicted Probability")
     plt.title("Logistic Classifier Decision Boundary")

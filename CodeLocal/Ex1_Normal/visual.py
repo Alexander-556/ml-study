@@ -24,6 +24,7 @@ def plot_regression(x_np, y_np, y_pred_np):
         label="Fitted Line",
     )
     
+    #Plot labels
     plt.xlabel("x")
     plt.ylabel("y")
     plt.title("Least Squares Fit (Normal Equation)")

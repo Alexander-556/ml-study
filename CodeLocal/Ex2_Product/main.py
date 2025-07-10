@@ -1,5 +1,5 @@
 # main.py
-# The entry point of the Exercise 2, 2D approach.
+# The entry point of the Exercise 2. A more effective 1D approach
 
 """Import Libraries and Custom Files"""
 
@@ -27,6 +27,7 @@ def main():
     score2_np = data[:, 1].reshape(-1, 1)
     stateF_np = data[:, 2].reshape(-1, 1)
     score_prod_np = score1_np * score2_np
+    #Reviewing the given data, taking the product of the scores represents the trend well
 
     # Convert from numpy list to torch tensors
     score_prod = torch.from_numpy(score_prod_np).float()
@@ -36,13 +37,16 @@ def main():
     norm_score_prod = normalize(score_prod)
 
     # * Step 2: Initialize and train model
+    #Epochs are the number of times we run the fit, while learning rate 
+    #scales how much we change our weights and biases each epoch. Tweaking
+    #these values can allow us to adjust the model and improve performance
     model = Logistic1DProd(learning_rate=0.01, epochs=5000)
     model.fit(norm_score_prod, stateF)
 
     # * Step 3: Output final parameters
     # Grab coefficients and piece up the model
     w, b = model.coefficients()
-    print(f"Final Model: y = sigmoid({w:.4f} * x + {b:.4f})")
+    print(f"Final Model: y = sigmoid({w:.4f} * x + {b:.4f})") #Our final equation
 
     # Calculate the accuracy values
     preds = model.predict(norm_score_prod)

@@ -1,5 +1,6 @@
 # model.py
-# The class definition of LinearNormal Class, Analytical approach.
+# The class definition of LinearNormal Class, Analytical approach. No machine learning involved
+# This can be useful as a benchmark to compare our ML results to
 
 """Import Libraries and Custom Files"""
 
@@ -45,7 +46,7 @@ class LinearNormal:
         b = self.theta[0]
         w = self.theta[1]
 
-        return x * w + b
+        return x * w + b #Our equation, in point-slope form
 
     # Function: coefficients()
     # Print out the coefficients in a tuple form. 

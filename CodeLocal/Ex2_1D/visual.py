@@ -9,11 +9,11 @@ import numpy as np
 
 
 def plot_data(score1_np, score2_np, stateF_np):
-
     # Use a mask to split by class
     mask_pass = stateF_np.flatten() == 1
     mask_fail = stateF_np.flatten() == 0
 
+    #This plots the success data along both scores
     plt.scatter(
         score1_np[mask_pass],
         score2_np[mask_pass],
@@ -22,6 +22,7 @@ def plot_data(score1_np, score2_np, stateF_np):
         label="Victory (1)",
     )
 
+    #This plots the fail data along both scores
     plt.scatter(
         score1_np[mask_fail],
         score2_np[mask_fail],
@@ -30,11 +31,13 @@ def plot_data(score1_np, score2_np, stateF_np):
         label="Defeat (0)",
     )
 
+    #Labels for the graph
     plt.xlabel("Score 1")
     plt.ylabel("Score 2")
     plt.title("Challenge Scores vs Outcome")
     plt.legend()
     plt.grid(True)
+    #This line stores the plot - can be commented out if you don't care to store it
     plt.savefig("./CodeLocal/Ex2_1D/Plots/DataScatter.png")
     plt.close()
 

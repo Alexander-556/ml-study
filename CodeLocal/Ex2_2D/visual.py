@@ -30,6 +30,8 @@ def plot_data(score1_np, score2_np, stateF_np):
     plt.title("Challenge Scores vs Outcome")
     plt.legend()
     plt.grid(True)
+    
+    #This line stores the plot - can be commented out if you don't care to store it
     plt.savefig("C:\\Documents\\600_Testing_Programing\\MLStudy\\CodeLocal\\Ex2\\Plots\\DataScatter.png")
     plt.close()
 
