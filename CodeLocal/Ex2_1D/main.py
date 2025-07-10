@@ -27,25 +27,28 @@ def main():
 
     # Calculate average from the two scores
     # and store avg into a 1D numpy list
-    avg_score_np = (score1_np + score2_np) / 2
+    avg_score_np = (score1_np + score2_np) / 2 #This is a reductive way to solve, but it does ok
 
     # Convert from numpy list to torch tensors
-    avg_score = torch.from_numpy(avg_score_np).float()
+    avg_score = torch.from_numpy(avg_score_np).float() #Torch only takes floats
     stateF = torch.from_numpy(stateF_np).float()
 
-    # Normalize Inputs using Z score
+    # Normalize Inputs using Z score. This lets torch process it more cleanly
     avg_mean = avg_score.mean()
     avg_std = avg_score.std()
     avg_score = (avg_score - avg_mean) / avg_std
 
     # * Step 2: Initialize and train model
-    model = Logistic1D(learning_rate=0.01, epochs=5000)
+    #Epochs are the number of times we run the fit, while learning rate 
+    #scales how much we change our weights and biases each epoch. Tweaking
+    #these values can allow us to adjust the model and improve performance
+    model = Logistic1D(learning_rate=0.01, epochs=5000) 
     model.fit(avg_score, stateF)
 
     # * Step 3: Output final parameters
     # Grab coefficients and piece up the model
     w, b = model.coefficients()
-    print(f"Final Model: y = sigmoid({w:.4f} * x + {b:.4f})")
+    print(f"Final Model: y = sigmoid({w:.4f} * x + {b:.4f})") #Our final equation
 
     # Calculate the accuracy values
     preds = model.predict(avg_score)

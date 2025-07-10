@@ -18,7 +18,7 @@ class Logistic1D:
         self.loss_history = []
 
     # Helper: _validate_gradients()
-    # Validates the parameters.
+    # Validates the parameters. Mainly useful to prevent issues when modifying code
     def _validate_gradients(self):
         if self.w is None or self.b is None:
             raise ValueError("Weights not initialized. Did you forget to call fit()?")
@@ -28,8 +28,7 @@ class Logistic1D:
                 "Gradients are not available. Did you run loss.backward()?"
             )
 
-    # Function: sigmoid()
-    # Define sigmoid function
+    # Define sigmoid function. This is the line equation we're trying to optimize
     def sigmoid(
         self,
         z: torch.Tensor,
@@ -46,12 +45,13 @@ class Logistic1D:
     ) -> torch.Tensor:
         # y is the real data
         # y_hat is the model predicted output
-        eps = 1e-8  # Prevent log(0)
+        eps = 1e-8  # Tiny offset that prevents log(0) errors
         return -torch.mean(
             y * torch.log(y_hat + eps) + (1 - y) * torch.log(1 - y_hat + eps)
         )
 
     def fit(self, X: torch.Tensor, y: torch.Tensor):
+        # This is where we actually run the machine learning.
         # Initialize weight and bias with random
         self.w = torch.randn(1, requires_grad=True)
         self.b = torch.randn(1, requires_grad=True)
